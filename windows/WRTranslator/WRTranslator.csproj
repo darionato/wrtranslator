@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\WRTranslatorLib\libwrtranslator.cs">
+    <Compile Include="..\..\lib\libwrtranslator.cs">
       <Link>libwrtranslator.cs</Link>
     </Compile>
     <Compile Include="frmMain.cs">
