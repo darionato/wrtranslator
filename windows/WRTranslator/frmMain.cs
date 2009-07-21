@@ -22,7 +22,7 @@ namespace WRTranslator
             txtTo.Text = "";
 
             lib_wrtranslation transl = new lib_wrtranslation();
-            transl.LanguageFromTo = enumLangFromTo.English_Italian;
+            transl.LanguageFromTo = (enumLangFromTo)Enum.Parse(typeof(enumLangFromTo), Convert.ToString(this.comboLangs.SelectedIndex + 1));
             transl.WordFrom = txtFrom.Text;
 
             transl.TranslateAsynch();
@@ -40,6 +40,12 @@ namespace WRTranslator
                 txtTo.Text = txtTo.Text.Substring(0, txtTo.Text.Length - 3);
             }
 
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.comboLangs.SelectedIndex = 0;
+            this.txtFrom.Text = Clipboard.GetText();
         }
     }
 }
