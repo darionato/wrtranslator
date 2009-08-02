@@ -156,7 +156,7 @@ public partial class MainWindow {
             this.Child.ShowAll();
         }
         this.DefaultWidth = 460;
-        this.DefaultHeight = 184;
+        this.DefaultHeight = 151;
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
         this.txtFrom.KeyPressEvent += new Gtk.KeyPressEventHandler(this.OnTxtFromKeyPressEvent);

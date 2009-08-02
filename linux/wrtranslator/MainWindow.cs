@@ -15,6 +15,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		
+		this.combobox1.Active = 1;
 		this.txtFrom.PasteClipboard();
 		this.txtFrom.IsFocus = true;
 		
@@ -40,15 +41,34 @@ public partial class MainWindow: Gtk.Window
 	 */
 	protected virtual void OnButton1Clicked (object sender, System.EventArgs e)
 	{
+		Hourglass = true;
 		DoTranslate();
+		Hourglass = false;
 	}
+		                                       
+	private bool Hourglass {
+
+        set {
+			
+            if (value == true) {
+                    this.GdkWindow.Cursor =  new Gdk.Cursor
+                            (Gdk.CursorType.Watch);
+            }
+            else {
+                    this.GdkWindow.Cursor = new Gdk.Cursor
+                            (Gdk.CursorType.LeftPtr);
+            }
+        }
+    }
 	
 	private void DoTranslate()
 	{
 		
 		if (m_WRTrans == null) m_WRTrans = new lib_wrtranslation();
 		
-		m_WRTrans.LanguageFromTo = enumLangFromTo.English_Italian;
+		m_WRTrans.LanguageFromTo = (enumLangFromTo) (this.combobox1.Active + 1);
+		
+		Console.WriteLine(m_WRTrans.LanguageFromTo.ToString());
 		
 		m_WRTrans.WordFrom = this.txtFrom.Text;
 		
@@ -87,7 +107,9 @@ public partial class MainWindow: Gtk.Window
 		
 		if (code == 65293 || code == 65421)
 		{
+			Hourglass = true;
 			DoTranslate();
+			Hourglass = false;
 		}
 		
 	}
