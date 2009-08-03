@@ -14,9 +14,21 @@ namespace WRTranslator
         public frmMain()
         {
             InitializeComponent();
+
+            this.txtFrom.KeyDown += new KeyEventHandler(txtFrom_KeyDown);
         }
 
-        private void btnTranslate_Click(object sender, EventArgs e)
+        void txtFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                Cursor = Cursors.WaitCursor;
+                DoTranslation();
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void DoTranslation()
         {
 
             txtTo.Text = "";
@@ -40,6 +52,13 @@ namespace WRTranslator
                 txtTo.Text = txtTo.Text.Substring(0, txtTo.Text.Length - 3);
             }
 
+        }
+
+        private void btnTranslate_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            DoTranslation();
+            Cursor = Cursors.Default;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
