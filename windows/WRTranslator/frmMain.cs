@@ -121,5 +121,10 @@ namespace WRTranslator
             HideForm();
         }
 
+        private void frmMain_Activated(object sender, EventArgs e)
+        {
+            this.txtFrom.Text = Clipboard.GetText();
+        }
+
     }
 }
