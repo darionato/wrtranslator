@@ -11,6 +11,10 @@ namespace WRTranslator
 {
     public partial class frmMain : Form
     {
+
+        private bool m_Close = false;
+        private NotifyIcon m_Tray;
+
         public frmMain()
         {
             InitializeComponent();
@@ -65,6 +69,57 @@ namespace WRTranslator
         {
             this.comboLangs.SelectedIndex = 0;
             this.txtFrom.Text = Clipboard.GetText();
+
+            m_Tray = new NotifyIcon();
+            m_Tray.DoubleClick += new EventHandler(m_Tray_DoubleClick);
+            m_Tray.ContextMenuStrip = this.contextMenuStrip1;
+            m_Tray.Icon = this.Icon;
+            m_Tray.Visible = true;
+
         }
+
+        void m_Tray_DoubleClick(object sender, EventArgs e)
+        {
+            ShowForm();
+        }
+
+        private void ShowForm()
+        {
+            this.ShowInTaskbar = true;
+            this.WindowState = FormWindowState.Normal;
+            this.Visible = true;
+            this.Show();
+        }
+
+        private void HideForm()
+        {
+            this.ShowInTaskbar = false;
+            this.Hide();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (m_Close == false)
+            {
+                e.Cancel = true;
+                this.HideForm();
+                return;
+            }
+
+            m_Tray.Visible = false;
+
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_Close = true;
+            this.Close();
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            HideForm();
+        }
+
     }
 }
