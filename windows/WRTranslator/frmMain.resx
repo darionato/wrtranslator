@@ -121,6 +121,25 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="quitToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
+        CxMBAJqcGAAAArxJREFUOE+lk11Ik2EUx52ggYwaCvm1trBlpk5lc1uKEqI3SpfeeCl6I3rjjUjeCCIm
+        fjdUQlDJjBCXyrBInTanfVD4kSu1dG7sw+Z0r5bNj7n+nb1ar3cRHfi/B57n+f+ec87LwwMQ8F/hB3QI
+        hXeaYmO1bTKZvpXUJpezup+aqr+vUHBSKvVqlUrfKpU+r46MvM1e7v90KpWrpsFBfBkYgD9bhoZg12ph
+        Gx7GJuUdnQ7uqSkwBgN2Z2dxsLiIkcbG938A/SoVDJWVmKmowBvS6/JyzFdVwbu3B5/Hg5WaGixXV8Nc
+        Xw9LSwvsHR0Yy8kh/1kFfUlJMJSWwlBcjFdkXqYKjLW1ONzcxLHTCUt/P74uLMBUVwc7gbeamjCmUHCA
+        h3Fx0BcUYLqwEO71df8GzGo1DiwWHDkccPX2smsegjmomp2iIrwIDz8HkEgwkZUFE83AH/aeHizk5cHr
+        dsO3vw9zfj6Y9nZ2b59msCm4iPHwy+daEIsxkZ6OH1YrvAyDuexsfMjMhKurC0x3N6y5uXAS8MRkgm+X
+        wZZEBJ1YyAEeRUdjUi7HMZk9a2t4l5gIo1KJVZkMG5Qdt9LgCAvFwbNRtgp3hhyT10Qc4DH14+/p29IS
+        Tmjq8wQzikT4TJWZwsJgpb9tDbmAY5sNP7ddcCtu4mVcDAd4EhoKLY+HTyUl7A1OjQZzISH4SMZ1kjkw
+        EO7O0xl4Hqixk3AF+sTrHGBAIMAoHRwniL25+fTgxgacra1wNTTAYzSya4cjGrgSr4JJi4dBGssBNGeA
+        SYIYSJayMhytrLAmf/houN/v1cIZEwFXghhMhhQzSTc4wFOh8EgfFIxpMr8lzZFWSbaICGxFRcF1iY9t
+        fjAYSRT2UiTwZsugS47nAOl8fnEfDexflCMQ3KVXzGMf01mIggICUkjJf1EKnY/5bfoFLt5VJRkqwmAA
+        AAAASUVORK5CYII=
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
