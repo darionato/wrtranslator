@@ -188,20 +188,37 @@ namespace Badlydone.WRTranslator
 
 			resp.Close();
 			
-			string RegExp = @"<span class=trn>[a-z0-9]*</span>";
+			string RegExp = @"<span class=trn>([a-z0-9]*)</span>";
 			Regex Engine = new Regex(RegExp, RegexOptions.IgnoreCase);
 			MatchCollection matches = Engine.Matches(sPage);
 			m_To = new string[matches.Count];
 			int x = 0;
 			foreach (Match words in matches)
 			{
-				m_To[x] = words.Value.Replace("<span class=trn>",string.Empty).Replace("</span>",string.Empty);
+				m_To[x] = words.Groups[1].Value;
 				
 				Console.WriteLine(m_To[x]);
 				
 				x++;
 			}
-						
+
+            RegExp = @"<tr class='even'><td class='FrW2'>([a-z0-9\s]*)</td><td class='POS2'>([a-z]*)</td><td class='FrCN2'>([a-z0-9\s\(\)]*)</td><td class='ToW2'>([a-z0-9\s]*)<span class='POS2'>nf</span></td></tr><tr class='oddEx'><td colspan=6 class='FrEx2'>([A-Za-z0-9\s\.]*)</td></tr><tr class='evenEx'><td colspan=6 class='ToEx2'>([A-Za-z0-9\s\.]*)</td></tr>";
+            Engine = new Regex(RegExp, RegexOptions.IgnoreCase);
+            matches = Engine.Matches(sPage);
+
+            foreach (Match words in matches)
+            {
+
+                Console.WriteLine("From: " + words.Groups[1].Value);
+                Console.WriteLine("Type: " + words.Groups[2].Value);
+                Console.WriteLine("Description: " + words.Groups[3].Value);
+                Console.WriteLine("To: " + words.Groups[4].Value);
+                Console.WriteLine("Phrase 1: " + words.Groups[5].Value);
+                Console.WriteLine("Phrase 2: " + words.Groups[6].Value);
+
+
+            }
+
 			Console.WriteLine("Done!");
 			
 			m_InProgress = false;
