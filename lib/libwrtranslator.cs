@@ -88,6 +88,8 @@ namespace Badlydone.WRTranslator
 			get { return m_TypeTranslation; }
 			set { m_TypeTranslation = value; }
 		}
+
+        public lib_return_translate ReturnedTranslate { get; set; }
 		
 		public string WordFrom
 		{
@@ -124,41 +126,35 @@ namespace Badlydone.WRTranslator
 			
 			m_workback.RunWorkerAsync();
 			
-			/*
-			Thread workback = new Thread(DoTranslation);
-			workback.IsBackground = true;
-			workback.Priority = ThreadPriority.Lowest;
-			workback.Start();
-			*/
-			
 		}
 		
 		void m_workback_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-    {
-        m_InProgress = false;
-    }
-
-    void m_workback_DoWork(object sender, DoWorkEventArgs e)
-    {
-        try
         {
-            DoTranslation();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        finally
-        {
-            m_workback.CancelAsync();
             m_InProgress = false;
         }
 
-    }
+        void m_workback_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                DoTranslation();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                m_workback.CancelAsync();
+                m_InProgress = false;
+            }
+
+        }
 		
 		private void DoTranslation()
 		{
-					
+
+            ReturnedTranslate = new lib_return_translate();
 			
 			Console.WriteLine("Make HTTP request");
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(m_WebSite + this.getKeyTrans() + "/" + m_From);
@@ -202,6 +198,8 @@ namespace Badlydone.WRTranslator
 				x++;
 			}
 
+            ReturnedTranslate.ToAll = m_To;
+
             RegExp = @"<tr class='even'><td class='FrW2'>([a-z0-9\s]*)</td><td class='POS2'>([a-z]*)</td><td class='FrCN2'>([a-z0-9\s\(\)]*)</td><td class='ToW2'>([a-z0-9\s]*)<span class='POS2'>nf</span></td></tr><tr class='oddEx'><td colspan=6 class='FrEx2'>([A-Za-z0-9\s\.]*)</td></tr><tr class='evenEx'><td colspan=6 class='ToEx2'>([A-Za-z0-9\s\.]*)</td></tr>";
             Engine = new Regex(RegExp, RegexOptions.IgnoreCase);
             matches = Engine.Matches(sPage);
@@ -209,11 +207,22 @@ namespace Badlydone.WRTranslator
             foreach (Match words in matches)
             {
 
+                ReturnedTranslate.From = words.Groups[1].Value;
                 Console.WriteLine("From: " + words.Groups[1].Value);
+
+                ReturnedTranslate.TypeWord = words.Groups[2].Value;
                 Console.WriteLine("Type: " + words.Groups[2].Value);
+
+                ReturnedTranslate.Description = words.Groups[3].Value;
                 Console.WriteLine("Description: " + words.Groups[3].Value);
+
+                ReturnedTranslate.To = words.Groups[4].Value;
                 Console.WriteLine("To: " + words.Groups[4].Value);
+
+                ReturnedTranslate.Phrase_1 = words.Groups[5].Value;
                 Console.WriteLine("Phrase 1: " + words.Groups[5].Value);
+
+                ReturnedTranslate.Phrase_2 = words.Groups[6].Value;
                 Console.WriteLine("Phrase 2: " + words.Groups[6].Value);
 
 
@@ -226,4 +235,18 @@ namespace Badlydone.WRTranslator
 		}
 		
 	}
+
+    public class lib_return_translate
+    {
+
+        public string From { get; set; }
+        public string[] ToAll { get; set; }
+        public string TypeWord { get; set; }
+        public string Description { get; set; }
+        public string To { get; set; }
+        public string Phrase_1 { get; set; }
+        public string Phrase_2 { get; set; }
+
+    }
+
 }
