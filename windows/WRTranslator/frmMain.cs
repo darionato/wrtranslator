@@ -56,6 +56,11 @@ namespace WRTranslator
                 txtTo.Text = txtTo.Text.Substring(0, txtTo.Text.Length - 3);
             }
 
+            lblTO.Text = transl.ReturnedTranslate.To;
+            lblPhrase1.Text = transl.ReturnedTranslate.Phrase_1;
+            lblPhrase2.Text = transl.ReturnedTranslate.Phrase_2;
+
+
         }
 
         private void btnTranslate_Click(object sender, EventArgs e)
@@ -126,6 +131,8 @@ namespace WRTranslator
         private void frmMain_Activated(object sender, EventArgs e)
         {
             this.txtFrom.Text = Clipboard.GetText();
+            this.txtFrom.SelectAll();
+            this.txtFrom.Focus();
         }
 
     }
