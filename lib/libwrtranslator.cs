@@ -112,10 +112,18 @@ namespace Badlydone.WRTranslator
 		
 		public void WaitDone()
 		{
-            while (m_InProgress)
-            {
-                System.Windows.Forms.Application.DoEvents();
-            }
+#if WIN32
+			while (m_InProgress)
+	            {
+	                System.Windows.Forms.Application.DoEvents();
+	            }
+				
+#else
+	   		while (m_InProgress)
+        	{
+				while (GLib.MainContext.Iteration());
+        	}  
+#endif
 		}
 		
 		public void TranslateAsynch()
