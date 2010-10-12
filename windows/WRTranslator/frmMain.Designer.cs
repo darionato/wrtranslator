@@ -134,13 +134,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(98, 26);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quitToolStripMenuItem.Image")));
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -179,7 +179,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(672, 18);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Online Language Dictionaries";
+            this.label5.Text = "WordReference.com - online Language Dictionaries";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
@@ -192,7 +192,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(672, 26);
             this.label4.TabIndex = 0;
-            this.label4.Text = "WordReference.com";
+            this.label4.Text = "WR Translator";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel3
@@ -265,15 +265,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 294);
+            this.ClientSize = new System.Drawing.Size(678, 151);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Badlydone - WR Translator";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.Activated += new System.EventHandler(this.frmMain_Activated);
