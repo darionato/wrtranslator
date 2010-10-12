@@ -112,7 +112,7 @@ namespace Badlydone.WRTranslator
 		
 		public void WaitDone()
 		{
-#if WIN32
+#if !UNIX
 			while (m_InProgress)
 	            {
 	                System.Windows.Forms.Application.DoEvents();
