@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Badlydone.WRTranslator;
 
@@ -130,7 +131,11 @@ namespace WRTranslator
 
         private void frmMain_Activated(object sender, EventArgs e)
         {
-            this.txtFrom.Text = Clipboard.GetText();
+            Match m = Regex.Match(Clipboard.GetText(),@"([\w]+)", RegexOptions.IgnoreCase);
+            if (m.Success)
+                this.txtFrom.Text = m.Groups[1].Value;
+            else
+                this.txtFrom.Text = "";
             this.txtFrom.SelectAll();
             this.txtFrom.Focus();
         }
